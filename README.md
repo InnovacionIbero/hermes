@@ -10,6 +10,6 @@
 Estas son necesarias para hacer conexiones a la base de datos SQL.
 
 ## Configuraciones adicionales
-- Si se ejectua en wamp y se usa la base de datos local se deben hacer las siguientes configuraciones en el php.ini:
-    -     
+-Si se ejectua en wamp y se usa la base de datos local se deben hacer las siguientes configuraciones en el php.ini:
+       
 
