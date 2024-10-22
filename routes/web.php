@@ -671,4 +671,26 @@ Route::controller(filtrosController::class)->group(function(){
     Route::get('/home/filtrosprueba', 'render')->middleware('auth')->name('filtros.vista');
     Route::post('/home/filtrosprueba/getFacultades', 'getFacultades')->middleware('auth')->name('filtros.getfacultades');
 });
-/**Controlador de prueba para filtros, hacerle mejoras y correcciones  */
+
+Route::controller(PlaneacionDocentesController::class)->group(function(){
+    Route::get('/home/planeaciondocentes', 'planeacionDocentesView')->middleware('auth')->name('home.planeacion.docentes');
+    Route::post('/tabladocentesdisponibles', 'tablaDocentesDisponibles')->middleware('auth')->name('tabla.docentes.disponibles');
+    Route::post('/filtrosprogramafacultad', 'filtrosProgramaFacultad')->middleware('auth')->name('filtros.programas.facultad');
+    Route::post('/filtroschangefacultad', 'filtrosChangeFacultad')->middleware('auth')->name('filtros.change.facultad');
+    Route::post('/updateasignaturasdocente', 'updateAsignaturasDocente')->middleware('auth')->name('update.asignaturas.docente');
+    Route::post('/updatepreferenciasdocente', 'updatePreferenciaDocente')->middleware('auth')->name('update.preferencias.docente');
+    Route::post('/updatecupodisponibledocente', 'updateCupoDisponibleDocente')->middleware('auth')->name('update.cupo.disponible.docente');
+    Route::post('/inhabilitardocente', 'inhabilitarDocente')->middleware('auth')->name('inhabilitar.docente');
+    Route::post('/removerasignaturadocente', 'removerAsignaturaDocente')->middleware('auth')->name('remover.asignatura.docente');
+    Route::post('/traermallaprograma', 'traerMallaPrograma')->middleware('auth')->name('traer.malla.programa');
+    Route::post('/traermallatransversal', 'mallaTransversal')->middleware('auth')->name('traer.malla.transversal');
+    Route::post('/creardocente', 'crearDocente')->middleware('auth')->name('crear.docente');
+    
+    Route::post('/cursosfacultad', 'cursosFacultad')->middleware('auth')->name('cursos.transversal');
+    Route::post('/tabladocentestransversalesdisponibles', 'tablaDocentesTransversalesDisponibles')->middleware('auth')->name('tabla.docentes.transversales.disponibles');
+
+    Route::post('/tablaplaneaciondisponibles', 'tablaPlaneacionDocentes')->middleware('auth')->name('tabla.planeacion.docentes');
+    Route::post('/tablaasignaturaspendientes', 'tablaAsignaturasPendientes')->middleware('auth')->name('tabla.asignaturas.pendientes');
+    Route::post('/tabladocentesasignados', 'tablaDocentesAsignados')->middleware('auth')->name('tabla.docentes.asisgnados');
+
+});

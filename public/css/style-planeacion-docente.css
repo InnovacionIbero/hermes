@@ -1,0 +1,58 @@
+.row-filtros{
+    width: 100%;
+}
+
+.fondocards{
+    background-color: #3A6577!important;
+}
+
+#acordion-programas, #acordion-cursos{
+    min-height: 250px;
+    overflow: auto;
+    max-height: 250px;
+}
+
+.select-data-table, .select-añadir-programa {
+    width: 200px;
+}
+
+.cupo-disponible-docente {
+    width: 60px;
+}
+
+#datatable-docentes-disponibles {
+    width: 100%!important;
+}
+
+.button-informe {
+    background-color: #dfc14e;
+    border-color: hsl(48, 69%, 59%);
+    color: white;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    place-items: center;
+    font-size: 14px;
+}
+
+.container-planeacion-docentes{
+    display: flex;
+    flex-direction: column;
+}
+
+.sticky-footer {
+    margin-top: auto;
+}
+
+.button-remover-asignatura,.button-remover-asignatura-modal-crear, .button-remover-programa-modal-crear{
+    cursor:pointer;
+}
+
+#programas-seleccionados-docente li {
+    margin-left: 5%;
+}
+
+#asignaturas-seleccionadas-docente li {
+    margin-left: 5%;
+}
