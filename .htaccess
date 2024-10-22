@@ -1,0 +1,11 @@
+###START MOD_REWRITE
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    #REMOVE .html EXTENSION
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+</IfModule>
+###END MOD_REWRITE
