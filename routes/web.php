@@ -36,8 +36,8 @@ use App\Http\Controllers\MicrosoftAuthController;
 */
 
 Route::get('/', function () {
-    //return view('welcome');
-    return view('login/index');
+    return view('welcome');
+    //return view('login/index');
 });
 Route::get('/auth/microsoft', [MicrosoftAuthController::class,'redirectToMicrosoft'])->name('login.microsoft');;
 Route::get('/auth/microsoft/callback', [MicrosoftAuthController::class,'handleMicrosoftCallback']);
