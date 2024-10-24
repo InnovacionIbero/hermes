@@ -23,6 +23,7 @@ use App\Http\Controllers\MicrosoftLoginController;
 use App\Http\Controllers\MicrosoftGraphController;
 use App\Http\Controllers\RegistrosMoodleController;
 use App\Http\Controllers\MicrosoftAuthController;
+use App\Http\Controllers\PlaneacionDocentesController;
 
 /*
 |--------------------------------------------------------------------------
