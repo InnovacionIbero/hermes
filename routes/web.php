@@ -36,8 +36,8 @@ use App\Http\Controllers\MicrosoftAuthController;
 */
 
 Route::get('/', function () {
-    //return view('welcome');
-    return view('login/index');
+    return view('welcome');
+    //return view('login/index');
 });
 Route::get('/auth/microsoft', [MicrosoftAuthController::class,'redirectToMicrosoft'])->name('login.microsoft');;
 Route::get('/auth/microsoft/callback', [MicrosoftAuthController::class,'handleMicrosoftCallback']);
@@ -103,17 +103,17 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/home/programasUsuarios', 'traerProgramasUsuarios')->name('traer.programas.usuarios');
 
     Route::get('/home/solicitudes', 'solicitudesSistema')->middleware('auth')->name('solicitudes.sistema');
-    
+
     Route::get('/home/ultimoIngreso', 'ultimoIngreso')->middleware('auth')->name('ultimo.ingreso');
-    
+
     Route::get('/home/traerSolicitudes', 'traerSolicitudes')->middleware('auth')->name('traer.solicitudes');
-    
+
     Route::get('/home/ultimoIngresoUsuarios', 'ultimoIngresoUsuarios')->middleware('auth')->name('ultimo.ingreso.usuarios');
 
     Route::post('/home/resolverSoliciud', 'resolverSoliciud')->middleware('auth')->name('solicitud.resuelta');
-    
+
     Route::post('/home/verificarPendientes', 'verificarPendientes')->middleware('auth')->name('verificar.pendientes');
-    
+
     Route::post('/home/programasBuscador', 'buscarProgramas')->middleware('auth')->name('programas.buscador');
 
     Route::post('/home/renovarpassword', 'renovarPassword')->middleware('auth')->name('renovar.password');
@@ -201,7 +201,7 @@ Route::controller(InformeMafiController::class)->group(function () {
     Route::post('/home/mafi/graficoMetasTotal', 'graficoMetasTotal')->middleware('auth')->name('metasTotal.programa');
     /** Ruta para cargar gráfico de metas por facultad*/
     Route::post('/home/mafi/graficoMetasFacultadTotal', 'graficoMetasFacultadTotal')->middleware('auth')->name('metasTotalFacultad.programa');
-    
+
     Route::post('/home/mafi/graficoMetasProgramasTotal', 'graficoMetasProgramasTotal')->middleware('auth')->name('metasTotalPrograma.programa');
     /** Ruta para cargar gráfico de metas 5 mayores*/
     Route::post('/home/mafi/graficoMetas', 'graficoMetas')->middleware('auth')->name('metas.programa');
@@ -223,16 +223,16 @@ Route::controller(InformeMafiController::class)->group(function () {
     Route::post('/home/dataMafiFacultad', 'excelMafiFacultad')->name('data.Mafi.facultad');
     /** Data Excel Mafi por programa*/
     Route::post('/home/dataMafiPrograma', 'excelMafiPrograma')->name('data.Mafi.programa');
-    
+
     // Route::get('/home/Moodle/probar', 'tablaProgramasPeriodos')->middleware('auth')->name('moodle.probar');
      /** Ruta para traer los programas */
      Route::post('/home/programas', 'traerprogramas')->name('traer.programas.filtro');
      Route::post('/home/traercursos', 'traerCursos')->name('traer.cursos.filtro');
-  
-    
+
+
     Route::post('/home/estudiantesPorPrograma/{tabla}', 'estudiantesPrograma')->middleware('auth')->name('estudiantes.PorPrograma');
     Route::post('/home/estudiantesPorProgramaTotal/{tabla}', 'estudiantesPorProgramasTotal')->middleware('auth')->name('estudiantes.PorPrograma.total');
-    
+
     Route::post('/home/enviarEmail', 'enviarEmail')->middleware('auth')->name('email.solicitud');
 
 });
@@ -351,7 +351,7 @@ Route::controller(facultadController::class)->group(function () {
 
     /** para salvar las facultades */
     Route::post('/home/savefacultades', 'savefacultad')->middleware('auth','admin')->name('admin.guardarfacultad');
-  
+
     /** para actualizar las facultades */
     Route::post('/home/updatefacultades', 'updatefacultad')->middleware('auth','admin')->name('admin.updatefacultad');
     //** Ruta para inactivar facultad*/
@@ -414,17 +414,17 @@ Route::controller(facultadController::class)->group(function () {
 
     /** Ruta para editar los periodos activos*/
     Route::post('/home/editarProgramasPeriodos', 'actualizarProgramaPeriodo')->middleware('auth','admin')->name('programasPeriodos.actualizar');
-    
+
     Route::get('/home/metasprogramas', 'vistaMetas')->middleware('auth','admin')->name('metas.view');
-    
+
     Route::get('/home/traermetasprogramas', 'traerMetasActivas')->middleware('auth','admin')->name('metas.activas');
-    
+
     Route::post('/home/traertodosprogramas', 'traerTodosProgramas')->middleware('auth','admin')->name('get.todos.programas');
-    
+
     Route::post('/home/periodosactivosciclo1', 'periodosActivosCiclo1')->middleware('auth','admin')->name('get.periodos.ciclo1');
-    
+
     Route::post('/home/crearmeta', 'crearMeta')->middleware('auth','admin')->name('meta.crear');
-    
+
     Route::post('/home/editarmeta', 'updateMeta')->middleware('auth','admin')->name('meta.actualizar');
 
 });
@@ -462,9 +462,9 @@ Route::controller(AlertasTempranasController::class)->group(function(){
     Route::get('/alertastempranas/numeroalertasfacultad','numeroAlertasFacultad')->middleware('auth')->name('alertas.notificacionesfacultad');
     Route::get('/alertastempranas/numeroalertasprograma','numeroAlertasPrograma')->middleware('auth')->name('alertas.notificacionesprograma');
     Route::get('/alertastempranas/numeroalertascurso','numeroAlertasCurso')->middleware('auth')->name('alertas.notificacionescurso');
-    
+
     Route::post('/alertastempranas/tiposAlertas','tiposAlertas')->middleware('auth')->name('tipos.alertas');
-    
+
     Route::post('/alertastempranas/alertaResulta','inactivarAlerta')->middleware('auth')->name('alerta.resuelta');
 });
 
@@ -472,7 +472,7 @@ Route::controller(VistasTransversalesController::class)->group(function(){
 
     // Traer programas del usuario
     Route::post('/Moodle/programasCurso','programas')->name('programas.curso');
-    
+
     // Traer periodos activos
     Route::post('/Moodle/periodosActivosCursos/{tabla}','periodosActivosCursos')->name('periodos.activos.cursos');
 
@@ -486,59 +486,59 @@ Route::controller(VistasTransversalesController::class)->group(function(){
     // Estudiantes según tipo de riesgo
     Route::post('/home/Moodle/estudiantesCurso/{riesgo}', 'estudiantesRiesgoCurso')->middleware('auth')->name('moodle.estudiantes.curso');
      // Estudiantes según tipo de riesgo
-     
-  
-    
+
+
+
     // Tabla cursos
     Route::post('/home/Moodle/tablaCursosVista', 'tablaCursos')->middleware('auth')->name('moodle.tabla.cursos');
 
     Route::post('/home/Moodle/tablaCursosVistaCerrados', 'tablaCursoscerrados')->middleware('auth')->name('moodle.tabla.cursos.cerrados');
-    
-    // Data alumno     
+
+    // Data alumno
     Route::post('/home/Moodle/dataAlumnoCurso', 'dataAlumnoCurso')->middleware('auth')->name('data.alumno.cursos');
 
     // Graficos de riesgo
     Route::post('/home/Moodle/riesgoAsistenciaCurso', 'riesgoAsistenciaCurso')->middleware('auth')->name('riesgo.asistencia.cursos');
 
     Route::post('/home/estudiantesActivosTransversal', 'estudiantesActivos')->middleware('auth')->name('estudiantes.activos.transversal');
-    
+
     // Sello financiero
     Route::post('/home/selloEstudiantesCursos', 'selloEstudiantesCursos')->middleware('auth')->name('estudiantes.sello.curso');
-    
+
     Route::post('/home/selloRetencion', 'retencionEstudiantesCursos')->middleware('auth')->name('estudiantes.retencion.curso');
-    
+
     Route::post('/home/primerIngresoCursos', 'primerIngresoCursos')->middleware('auth')->name('primerIngreso.curso');
-    
+
     Route::post('/home/estudiantesAntiguosCursos', 'estudiantesAntiguosCursos')->middleware('auth')->name('estudiantesAntiguos.curso');
-    
+
     Route::post('/home/tiposEstudiantesCursos', 'tiposEstudiantesCursos')->middleware('auth')->name('tipos.estudiantes.curso');
-    
+
     Route::post('/home/tiposEstudiantesCursosTotal', 'tiposEstudiantesCursosTotal')->middleware('auth')->name('tipos.estudiantes.curso.total');
-    
+
     Route::post('/home/operadoresCursos', 'operadoresCursos')->middleware('auth')->name('operadores.curso');
-    
+
     Route::post('/home/operadoresCursosTotal', 'operadoresCursosTotal')->middleware('auth')->name('operadores.curso.total');
-    
+
     Route::post('/home/estudiantesProgramasCursos', 'estudiantesProgramasCursos')->middleware('auth')->name('estudiantes.programas.curso');
-    
+
     Route::post('/home/estudiantesProgramasCursosTotal', 'estudiantesProgramasCursosTotal')->middleware('auth')->name('estudiantes.programas.curso.total');
-    
+
     Route::post('/home/tablaProgramasCursos', 'tablaProgramasCursos')->middleware('auth')->name('tabla.programas.curso');
-    
+
     Route::post('/home/mallaProgramaCurso', 'mallaProgramaCurso')->middleware('auth')->name('malla.programas.curso');
-    
+
     Route::post('/home/estudiantesMateriaCurso', 'estudiantesMateriaCurso')->middleware('auth')->name('estudiantes.materia.curso');
-    
+
     Route::post('/home/datosEstudianteCurso', 'datosEstudianteCurso')->middleware('auth')->name('datos.estudiantes.curso');
-    
+
     Route::post('/home/sellocursos', 'selloMoodleCurso')->middleware('auth')->name('sello.moodle.cursos');
 
     Route::post('/home/sellocursosestudiantes', 'selloMoodleCursoEstudiantes')->middleware('auth')->name('sello.estudiantes.cursos');
-    
+
     Route::post('/home/operadorescursosmoodle', 'operadoresMoodleCurso')->middleware('auth')->name('operadores.moodle.cursos');
 
     Route::post('/home/operadorescursosmoodleestudiantes', 'operadoresMoodleCursoEstudiantes')->middleware('auth')->name('operadores.estudiantes.cursos');
-    
+
     Route::post('/home/tipoestudiantescursos', 'tiposEstudiantesMoodleCurso')->middleware('auth')->name('tipos.moodle.cursos');
 
     Route::post('/home/tipoestudiantecursosestudiantes', 'tiposEstudianteMoodleCursoEstudiantes')->middleware('auth')->name('tipos.estudiantes.cursos');
@@ -561,7 +561,7 @@ Route::controller(VistasTransversalesController::class)->group(function(){
 Route::controller(RegistrosMoodleController::class)->group(function(){
 
     Route::get('/crearRegistros','crearRegistroMoodle')->name('crear.registros.moodle');
-    
+
     Route::get('/verificarRegistros','verificacionRiesgoAcademico')->name('verificar.registros.moodle');
 
     // Route::get('/pruebaUpdate','crearRegistro')->name('verificar.registros.moodle');
@@ -580,29 +580,29 @@ Route::controller(InformeMoodleMejoradoController::class)->group(function(){
     Route::post('/prueba/Moodle/datosEstudiante', 'dataAlumno')->middleware('auth')->name('prueba.moodle.data');
 
     Route::post('/prueba/Moodle/riesgoAsistencia', 'riesgoAsistencia')->name('prueba.moodle.riesgo.asistencia');
-    
+
     Route::post('/prueba/Moodle/tablaCursos', 'tablaCursos')->name('prueba.tabla.cursos');
-    
+
     Route::post('/prueba/Moodle/tablaCursos/cerrados', 'tablaCursoscerrados')->name('prueba.tabla.cursoscerrados');
-    
+
     Route::get('/prueba/moodle','vistaPrueba')->middleware('auth')->name('prueba.moodle');
-    
+
     Route::post('/prueba/moodle/descargardatos', 'descargarTodoEstudiantesRiesgo')->middleware('auth')->name('descargar.ausentismo.moodle');
 
     Route::post('/prueba/moodle/descargardatosflash', 'descargarInformeFlash')->middleware('auth')->name('descargar.ausentismo.moodle.flash');
-    
+
     Route::post('/prueba/Moodle/descargardatacurso', 'descargarDatosCurso')->name('descargar.datos.curso');
-    
+
     Route::post('/prueba/Moodle/sellomoodle', 'selloMoodle')->name('sello.moodle');
-    
+
     Route::post('/prueba/Moodle/sellomoodleestudiantes', 'selloMoodleEstudiantes')->name('sello.moodle.estudiantes');
-    
+
     Route::post('/prueba/Moodle/operadoresmoodle', 'operadoresMoodle')->name('operador.moodle');
 
     Route::post('/prueba/Moodle/operadoresmoodleestudiantes', 'operadoresMoodleEstudiantes')->name('operador.moodle.estudiantes');
 
     Route::post('/prueba/Moodle/tiposestudiantesmoodle', 'tiposEstudiantesMoodle')->name('tipoestudiantes.moodle');
-    
+
     Route::post('/prueba/Moodle/tiposestudiantesmoodleestudiantes', 'tiposEstudiantesMoodleEstudiantes')->name('tipoestudiantes.moodle.estudiantes');
 
     Route::post('/prueba/Moodle/riesgoEstudiantes', 'riesgoEstudiantes')->name('riesgo.estudiantes');
@@ -612,40 +612,40 @@ Route::controller(InformeMoodleMejoradoController::class)->group(function(){
     Route::post('Estudiantescerrados/{riesgo}','tablaEstudiantescerrados')->middleware('auth')->name('tabla.cerrados.estudiantes');
 
     Route::get('/prueba/moodle/llenartabla','llenartabla')->middleware('auth')->name('llenar.tabla');
-    
+
     Route::get('/prueba/moodle/llenartablaprogramas','llenartablaprogramas')->middleware('auth')->name('llenar.tabla.programas');
 
 
-    Route::post('/prueba/moodle/descargarriesgoacademico','descargarInformeRiesgoAcademico')->middleware('auth')->name('descargar.riesgo.academico'); 
+    Route::post('/prueba/moodle/descargarriesgoacademico','descargarInformeRiesgoAcademico')->middleware('auth')->name('descargar.riesgo.academico');
     Route::post('/Moodle/riesgoEstudiantescerrado', 'riesgoEstudiantescerrado')->name('riesgo.estudiantes.cerrado');
-    Route::post('cierre/matriculas','matriculas')->middleware('auth')->name('cierre.matricula'); 
-    Route::post('cierre/estudiantes','academico')->middleware('auth')->name('cierre.academico'); 
-    Route::post('cierre/cursos','cursos')->middleware('auth')->name('cierre.cursos'); 
+    Route::post('cierre/matriculas','matriculas')->middleware('auth')->name('cierre.matricula');
+    Route::post('cierre/estudiantes','academico')->middleware('auth')->name('cierre.academico');
+    Route::post('cierre/cursos','cursos')->middleware('auth')->name('cierre.cursos');
     Route::post('/home/Moodlecerrado/estudiantes/{riesgo}', 'estudiantesRiesgoCerrado')->middleware('auth')->name('moodle.estudiantes.cerrado');
 
 
-  
-    Route::get('estudiantes/duplicados','duplicados')->middleware('auth')->name('duplicados.sistema'); 
-    Route::get('estudiantes/data','getduplicados')->middleware('auth')->name('aula.getduplicados'); 
-    
+
+    Route::get('estudiantes/duplicados','duplicados')->middleware('auth')->name('duplicados.sistema');
+    Route::get('estudiantes/data','getduplicados')->middleware('auth')->name('aula.getduplicados');
+
 
 });
 
 Route::controller(InformePlaneacionController::class)->group(function(){
     Route::post('/planeacion/estudiantesactivos','selloEstudiantesActivos')->middleware('auth')->name('sello.planeacion');
-    
+
     Route::post('/planeacion/estudiantesretencion','estudiantesRetencion')->middleware('auth')->name('retencion.planeacion');
-    
+
     Route::post('/planeacion/estudiantesprimeringreso','estudiantesPrimerIngreso')->middleware('auth')->name('primeringreso.planeacion');
-    
+
     Route::post('/planeacion/estudiantesantiguos','estudiantesAntiguos')->middleware('auth')->name('antiguos.planeacion');
-    
+
     Route::post('/planeacion/tiposestudiantes','tiposEstudiantes')->middleware('auth')->name('tiposestudiantes.planeacion');
-    
+
     Route::post('/planeacion/operadores','operadores')->middleware('auth')->name('operadores.planeacion');
-    
+
     Route::post('/planeacion/estudiantesprograma','estudiantesPorPrograma')->middleware('auth')->name('estudiantesprograma.planeacion');
-    
+
     Route::post('/planeacion/tiposestudiantestotal','tiposEstudiantesTotal')->middleware('auth')->name('tiposestudiantes.planeacion.total');
 
     Route::post('/planeacion/operadorestotal','operadoresTotal')->middleware('auth')->name('operadores.planeacion.total');
@@ -661,7 +661,7 @@ Route::controller(InformePlaneacionController::class)->group(function(){
     Route::post('/planeacion/materiasEstudiante', 'buscarEstudiante')->name('materias.estudiante');
 
     Route::post('/planeacion/tablafacultad', 'tablaProgramasFacultad')->name('tabla.planeacion.facultad');
-    
+
     Route::post('/planeacion/tablaprogramas', 'tablaProgramasP')->name('tabla.planeacion.programas');
 });
 
@@ -685,7 +685,7 @@ Route::controller(PlaneacionDocentesController::class)->group(function(){
     Route::post('/traermallaprograma', 'traerMallaPrograma')->middleware('auth')->name('traer.malla.programa');
     Route::post('/traermallatransversal', 'mallaTransversal')->middleware('auth')->name('traer.malla.transversal');
     Route::post('/creardocente', 'crearDocente')->middleware('auth')->name('crear.docente');
-    
+
     Route::post('/cursosfacultad', 'cursosFacultad')->middleware('auth')->name('cursos.transversal');
     Route::post('/tabladocentestransversalesdisponibles', 'tablaDocentesTransversalesDisponibles')->middleware('auth')->name('tabla.docentes.transversales.disponibles');
 
